@@ -1,0 +1,41 @@
+{
+  "name": "playwrite-demo",
+  "version": "1.0.0",
+  "description": "Gmail Email Sender using Playwright",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Baromental/playwrite-demo.git"
+  },
+  "keywords": [
+    "gmail",
+    "playwright",
+    "email",
+    "automation"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Baromental/playwrite-demo/issues"
+  },
+  "homepage": "https://github.com/Baromental/playwrite-demo#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.0.3",
+    "express": "^5.1.0",
+    "multer": "^2.0.2",
+    "otpauth": "^9.4.1",
+    "playwright": "^1.37.1",
+    "speakeasy": "^2.0.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.57.0",
+    "@types/node": "^24.10.1",
+    "nodemon": "^3.0.1"
+  }
+}
