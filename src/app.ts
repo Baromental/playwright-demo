@@ -1,14 +1,34 @@
-require('dotenv').config();
-const express = require('express');
-const bodyParser = require('body-parser');
-const { sendEmail } = require('./services/emailService');
+import dotenv from 'dotenv';
+import express, { Request, Response, NextFunction, Application } from 'express';
+import bodyParser from 'body-parser';
+import emailService from './services/emailService';
 
-const app = express();
-const PORT = process.env.PORT || 3000;
+const { sendEmail } = emailService;
+
+dotenv.config();
+
+const app: Application = express();
+const PORT: number = parseInt(process.env.PORT || '3000', 10);
 
 app.use(bodyParser.json());
 
-app.post('/api/send-email', async (req, res) => {
+interface EmailRequest extends Request {
+    body: {
+        to: string;
+        subject: string;
+        message: string;
+        attachmentPath?: string;
+    };
+}
+
+interface ApiResponse<T = any> {
+    success: boolean;
+    message: string;
+    data?: T;
+    error?: string;
+}
+
+app.post('/api/send-email', async (req: EmailRequest, res: Response<ApiResponse>, next: NextFunction) => {
     try {
         const { to, subject, message, attachmentPath } = req.body;
         
@@ -31,7 +51,7 @@ app.post('/api/send-email', async (req, res) => {
             message: 'Email sent successfully',
             data: result
         });
-    } catch (error) {
+    } catch (error: any) {
         console.error('Error sending email:', error);
         res.status(500).json({ 
             success: false, 
@@ -44,5 +64,3 @@ app.post('/api/send-email', async (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
-
-module.exports = app;

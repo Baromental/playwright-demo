@@ -2,10 +2,10 @@
   "name": "playwrite-demo",
   "version": "1.0.0",
   "description": "Gmail Email Sender using Playwright",
-  "main": "src/app.js",
+  "main": "src/app.ts",
   "scripts": {
-    "start": "node src/app.js",
-    "dev": "nodemon src/app.js"
+    "start": "ts-node src/app.ts",
+    "dev": "nodemon --exec ts-node src/app.ts"
   },
   "repository": {
     "type": "git",
@@ -31,11 +31,16 @@
     "multer": "^2.0.2",
     "otpauth": "^9.4.1",
     "playwright": "^1.37.1",
-    "speakeasy": "^2.0.0"
+    "speakeasy": "^2.0.0",
+    "ts-node": "^10.9.2"
   },
   "devDependencies": {
     "@playwright/test": "^1.57.0",
+    "@types/body-parser": "^1.19.6",
+    "@types/express": "^5.0.5",
     "@types/node": "^24.10.1",
-    "nodemon": "^3.0.1"
+    "@types/speakeasy": "^2.0.10",
+    "nodemon": "^3.0.1",
+    "typescript": "^5.9.3"
   }
 }
